@@ -1,9 +1,18 @@
-const string = 'Saat meng*ecat tembok, Agung dib_antu oleh Raihan.'
+const str = "Saat meng*ecat tembok, Agung dib_antu oleh Raihan.";
 
 function countWords(str) {
+    const specialChars = /[`!@#$%^&*()_+\-=\[\]{};':"\\|<>\/?~]/;
     const arr = str.split(' ');
+    const newArr = [];
 
-    return arr.filter(word => word !== '').length;
+    for (i = 0; i < str.length; i++) {
+        if (specialChars.test(arr[i]))
+            newArr.push(arr[i])
+    }
+
+    let wordsLength = arr.length - newArr.length;
+
+    return wordsLength
 }
 
-console.log(countWords(string));
+console.log(countWords(str));
